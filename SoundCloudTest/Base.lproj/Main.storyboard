@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -34,20 +35,29 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="103.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ha4-Ic-hi7">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ha4-Ic-hi7">
                                                     <rect key="frame" x="8" y="2" width="100" height="100"/>
                                                     <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Ha4-Ic-hi7" secondAttribute="height" multiplier="1:1" id="vKE-Zh-fr2"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrF-7w-i7o">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrF-7w-i7o">
                                                     <rect key="frame" x="116" y="8" width="196" height="57"/>
                                                     <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="zrF-7w-i7o" secondAttribute="height" multiplier="196:57" id="KoZ-Zh-B1K"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CPV-yX-hg1">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CPV-yX-hg1">
                                                     <rect key="frame" x="116" y="73" width="196" height="30"/>
                                                     <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="CPV-yX-hg1" secondAttribute="height" multiplier="98:15" id="3NO-Ge-jXe"/>
+                                                    </constraints>
                                                     <state key="normal">
                                                         <attributedString key="attributedTitle">
                                                             <fragment content="Button">
@@ -60,6 +70,17 @@
                                                 </button>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="CPV-yX-hg1" secondAttribute="trailing" constant="8" id="3y5-HM-7Te"/>
+                                                <constraint firstItem="Ha4-Ic-hi7" firstAttribute="leading" secondItem="tbT-nV-PkJ" secondAttribute="leading" constant="8" id="EYu-Pa-rEC"/>
+                                                <constraint firstAttribute="bottom" secondItem="Ha4-Ic-hi7" secondAttribute="bottom" constant="1.5" id="Eaa-b4-BGe"/>
+                                                <constraint firstAttribute="trailing" secondItem="zrF-7w-i7o" secondAttribute="trailing" constant="8" id="GAj-gk-VLs"/>
+                                                <constraint firstItem="Ha4-Ic-hi7" firstAttribute="top" secondItem="tbT-nV-PkJ" secondAttribute="top" constant="2" id="QjJ-d0-yo5"/>
+                                                <constraint firstItem="CPV-yX-hg1" firstAttribute="leading" secondItem="Ha4-Ic-hi7" secondAttribute="trailing" constant="8" id="Wvp-v5-VTE"/>
+                                                <constraint firstItem="zrF-7w-i7o" firstAttribute="leading" secondItem="Ha4-Ic-hi7" secondAttribute="trailing" constant="8" id="b5C-re-F8N"/>
+                                                <constraint firstAttribute="bottom" secondItem="CPV-yX-hg1" secondAttribute="bottom" constant="0.5" id="oZE-ib-z5Q"/>
+                                                <constraint firstItem="zrF-7w-i7o" firstAttribute="top" secondItem="tbT-nV-PkJ" secondAttribute="top" constant="8" id="oiz-I0-Aha"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>

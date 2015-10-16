@@ -91,5 +91,14 @@
     
 }
 
+- (NSURL*) getMusicStreamUrl: (NSString*) musicModel{
+    
+    NSURL* url = [NSURL URLWithString:[NSString stringWithFormat:@"%@.json?client_id=%@", musicModel, CLIENT_ID]];
+    
+    return url;
+    
+}
+
+
 
 @end

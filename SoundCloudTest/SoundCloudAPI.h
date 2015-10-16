@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class UIImage;
+@class MusicModel;
 
 @interface SoundCloudAPI : NSObject
 
@@ -17,4 +18,5 @@
 - (void) getMusicsForSearchString: (NSString*) searchString completionBlock:(void(^)(NSArray* array, NSError* error)) completion;
 - (void) getUserMusicForUserID: (NSString*) userID completionBlock:(void(^)(NSArray* array, NSError* error)) completion;
 - (void) getImageForMusicWithUrl: (NSString*) url completionBlock:(void(^)(UIImage* image)) completion;
+- (NSURL*) getMusicStreamUrl: (NSString*) musicModel;
 @end
