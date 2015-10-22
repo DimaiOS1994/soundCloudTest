@@ -13,10 +13,20 @@
 
 @interface SoundCloudAPI : NSObject
 
-@property (strong, nonatomic) NSURLSession* session;
+@property(strong, nonatomic) NSURLSession* session;
 
-- (void) getMusicsForSearchString: (NSString*) searchString completionBlock:(void(^)(NSArray* array, NSError* error)) completion;
-- (void) getUserMusicForUserID: (NSString*) userID completionBlock:(void(^)(NSArray* array, NSError* error)) completion;
-- (void) getImageForMusicWithUrl: (NSString*) url completionBlock:(void(^)(UIImage* image)) completion;
-- (NSURL*) getMusicStreamUrl: (NSString*) musicModel;
+- (void)getMusicsWithSearchString:(NSString*)searchString
+                        withLimit:(NSInteger)limit
+                       withOffset:(NSInteger)offset
+                  completionBlock:
+                      (void (^)(NSArray* array, NSError* error))completion;
+
+- (void)getUserMusicForUserID:(NSString*)userID
+              completionBlock:
+                  (void (^)(NSArray* array, NSError* error))completion;
+
+- (void)getImageForMusicWithUrl:(NSString*)url
+                completionBlock:(void (^)(UIImage* image))completion;
+
+- (NSURL*)getMusicStreamUrl:(NSString*)musicModel;
 @end

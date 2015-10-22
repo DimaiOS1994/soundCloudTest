@@ -6,8 +6,8 @@
 //  Copyright © 2015 Дима. All rights reserved.
 //
 
-#import "MusicModel.h"
+#import "Track.h"
 
-@implementation MusicModel
+@implementation Track
 
 @end

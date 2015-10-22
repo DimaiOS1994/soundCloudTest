@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SoundCloudTest/SoundCloudAPI.m"
-            timestampString = "466640417.304202"
+            timestampString = "467162520.851573"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
-            landmarkName = "-getMusicsForSearchString:completionBlock:"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "-getMusicsWithSearchString:withLimit:withOffset:completionBlock:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -26,12 +26,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SoundCloudTest/SoundCloudAPI.m"
-            timestampString = "466640663.069052"
+            timestampString = "467162834.509314"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "-getMusicsForSearchString:completionBlock:"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "-getMusicsWithSearchString:withLimit:withOffset:completionBlock:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -42,12 +42,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SoundCloudTest/SoundCloudAPI.m"
-            timestampString = "466640417.304202"
+            timestampString = "467162520.851573"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
-            landmarkName = "-getMusicsForSearchString:completionBlock:"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "-getMusicsWithSearchString:withLimit:withOffset:completionBlock:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -58,12 +58,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SoundCloudTest/SoundCloudAPI.m"
-            timestampString = "466640663.069052"
+            timestampString = "467162834.509314"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "-getMusicsForSearchString:completionBlock:"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "-getMusicsWithSearchString:withLimit:withOffset:completionBlock:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -74,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SoundCloudTest/SoundCloudAPI.m"
-            timestampString = "466640663.069052"
+            timestampString = "467162834.509314"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "-getMusicsForSearchString:completionBlock:"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "-getMusicsWithSearchString:withLimit:withOffset:completionBlock:"
             landmarkType = "5">
             <Locations>
                <Location
@@ -122,12 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SoundCloudTest/SoundCloudAPI.m"
-            timestampString = "466640663.069052"
+            timestampString = "467162834.509314"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "-getMusicsForSearchString:completionBlock:"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "-getMusicsWithSearchString:withLimit:withOffset:completionBlock:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SoundCloudTest/SoundCloudAPI.m"
-            timestampString = "466643274.130107"
+            timestampString = "467162834.509314"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
             landmarkName = "-getImageForMusicWithUrl:completionBlock:"
             landmarkType = "5">
          </BreakpointContent>
@@ -170,28 +170,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SoundCloudTest/SoundCloudAPI.m"
-            timestampString = "466640665.917629"
+            timestampString = "467162520.851573"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
-            landmarkName = "-getMusicsForSearchString:completionBlock:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SoundCloudTest/SoundCloudAPI.m"
-            timestampString = "466640667.54331"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "-getMusicsForSearchString:completionBlock:"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "-getMusicsWithSearchString:withLimit:withOffset:completionBlock:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -218,13 +202,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SoundCloudTest/SoundCloudAPI.m"
-            timestampString = "466695242.739441"
+            timestampString = "467162834.509314"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "97"
-            endingLineNumber = "97"
-            landmarkName = "-getMusicStreamUrl:"
-            landmarkType = "5">
+            startingLineNumber = "100"
+            endingLineNumber = "100">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -240,6 +222,38 @@
             startingLineNumber = "96"
             endingLineNumber = "96"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SoundCloudTest/TrackListViewController.m"
+            timestampString = "467246840.889616"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "81"
+            endingLineNumber = "81"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SoundCloudTest/TrackListViewController.m"
+            timestampString = "467246840.889616"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
