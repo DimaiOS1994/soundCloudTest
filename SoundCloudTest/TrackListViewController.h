@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "TrackListCell.h"
+#define DOCUMENTS                                                             \
+  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, \
+                                       YES) lastObject]
 
 @interface TrackListViewController
     : UIViewController<UISearchBarDelegate, UITableViewDataSource,

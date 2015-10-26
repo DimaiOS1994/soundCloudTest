@@ -10,6 +10,6 @@
 
 @interface LeftViewController : UITableViewController
 
-@property (strong, nonatomic) UIColor *tintColor;
+@property(strong, nonatomic) UIColor *tintColor;
 
 @end

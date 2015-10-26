@@ -7,107 +7,103 @@
 //
 
 #import "FileManagerViewController.h"
-#define DOCUMENTS [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject]
+#define DOCUMENTS                                                             \
+  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, \
+                                       YES) lastObject]
 
 @interface FileManagerViewController ()
 
-@property(strong, nonatomic) NSArray* array;
-@property(strong, nonatomic) AVQueuePlayer* audio;
+@property(strong, nonatomic) NSArray *array;
+@property(strong, nonatomic) AVQueuePlayer *audio;
 
 @end
 
 @implementation FileManagerViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    self.array = [NSArray array];
-    
-    self.array = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:[DOCUMENTS stringByAppendingPathComponent:@"/Music"]  error:nil];
-    
-    
-    
+  [super viewDidLoad];
 
-//    
-//    [self.api downloadFileWithUrl:[NSURL URLWithString:@"http://www.apple.com"] withCompletionBlock:^(NSURL *location) {
-//        
-//        self.api downloadFileWithUrl:[NSURL URLWithString:@"http://www.apple.com"] withFinishName:<#(NSString *)#> withCompletionBlock:<#^(NSURL *location)completion#>
-//    
-//
-//       dispatch_async(dispatch_get_main_queue(), ^{
-//
-//           AVPlayerItem *item = [AVPlayerItem playerItemWithURL:location];
-//           
-//           self.audio = [[AVQueuePlayer alloc] initWithPlayerItem:item];
-//           
-//           self.audio.actionAtItemEnd = AVPlayerActionAtItemEndAdvance;
-//           
-//           AVPlayerViewController *vc = [[AVPlayerViewController alloc] init];
-//           [vc setPlayer:self.audio];
-//           
-//           [self presentViewController:vc animated:YES completion:nil];
-//           [vc.player play];
-//           
-//       });
-//        
-//
-//        
-//        
-//        
-//    }];
-}
--(void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
-    NSString* str = [DOCUMENTS stringByAppendingPathComponent:[NSString stringWithFormat:@"/Music/%@", self.array[indexPath.row]]];
-    
-    
-    AVPlayerItem *item = [AVPlayerItem playerItemWithURL:[NSURL fileURLWithPath:str]];
-    
-    
-                          
-    self.audio = [[AVQueuePlayer alloc] initWithPlayerItem:item];
-                          
-    self.audio.actionAtItemEnd = AVPlayerActionAtItemEndAdvance;
-                          
-    AVPlayerViewController *vc = [[AVPlayerViewController alloc] init];
-    [vc setPlayer:self.audio];
-                          
-    [self presentViewController:vc animated:YES completion:nil];
-    [vc.player play];
-    
-}
-    
+  self.array = [NSArray array];
 
+  self.array = [[NSFileManager defaultManager]
+      contentsOfDirectoryAtPath:[DOCUMENTS
+                                    stringByAppendingPathComponent:@"/Music"]
+                          error:nil];
+
+  //
+  //    [self.api downloadFileWithUrl:[NSURL
+  //    URLWithString:@"http://www.apple.com"] withCompletionBlock:^(NSURL
+  //    *location) {
+  //
+  //        self.api downloadFileWithUrl:[NSURL
+  //        URLWithString:@"http://www.apple.com"] withFinishName:<#(NSString
+  //        *)#> withCompletionBlock:<#^(NSURL *location)completion#>
+  //
+  //
+  //       dispatch_async(dispatch_get_main_queue(), ^{
+  //
+  //           AVPlayerItem *item = [AVPlayerItem playerItemWithURL:location];
+  //
+  //           self.audio = [[AVQueuePlayer alloc] initWithPlayerItem:item];
+  //
+  //           self.audio.actionAtItemEnd = AVPlayerActionAtItemEndAdvance;
+  //
+  //           AVPlayerViewController *vc = [[AVPlayerViewController alloc]
+  //           init];
+  //           [vc setPlayer:self.audio];
+  //
+  //           [self presentViewController:vc animated:YES completion:nil];
+  //           [vc.player play];
+  //
+  //       });
+  //
+  //
+  //
+  //
+  //
+  //    }];
+}
+- (void)tableView:(UITableView *)tableView
+    didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  NSString *str = [DOCUMENTS
+      stringByAppendingPathComponent:
+          [NSString stringWithFormat:@"/Music/%@", self.array[indexPath.row]]];
+
+  AVPlayerItem *item =
+      [AVPlayerItem playerItemWithURL:[NSURL fileURLWithPath:str]];
+
+  self.audio = [[AVQueuePlayer alloc] initWithPlayerItem:item];
+
+  self.audio.actionAtItemEnd = AVPlayerActionAtItemEndAdvance;
+
+  AVPlayerViewController *vc = [[AVPlayerViewController alloc] init];
+  [vc setPlayer:self.audio];
+
+  [self presentViewController:vc animated:YES completion:nil];
+  [vc.player play];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    return self.array.count;
+  return self.array.count;
 }
 
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+  return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell =
-    [tableView dequeueReusableCellWithIdentifier:@"Cell"];
-    
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                    reuseIdentifier:@"Cell"];
-    }
-    
-    
-    
-    cell.textLabel.text = [self.array objectAtIndex:indexPath.row];
-    
-    
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell"];
 
-    return cell;
+  if (!cell) {
+    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                  reuseIdentifier:@"Cell"];
+  }
+
+  cell.textLabel.text = [self.array objectAtIndex:indexPath.row];
+
+  return cell;
 }
-
 
 @end

@@ -22,6 +22,7 @@
 @property(strong, nonatomic) SoundCloudAPI *api;
 @property(strong, nonatomic) NSString *searchText;
 @property(strong, nonatomic) NSString *userId;
+@property (assign,nonatomic) BOOL isDownload;
 
 @end
 
@@ -34,6 +35,7 @@ static UIActivityIndicatorView *activityTable;
   [super viewDidLoad];
 
   self.userId = @"";
+    self.isDownload = NO;
 
   self.navigationItem.title = @"Поиск";
 
@@ -94,6 +96,8 @@ static UIActivityIndicatorView *activityTable;
                             [self.tableView reloadData];
                             [activityTable stopAnimating];
                           });
+                        } noResult:^(BOOL result) {
+                            
                         }];
   }
 
@@ -101,6 +105,18 @@ static UIActivityIndicatorView *activityTable;
   cell.title.text = musicModel.title;
   [cell.userButton setTitle:musicModel.userName forState:UIControlStateNormal];
   cell.delegate = self;
+
+  NSArray *contentArray = [[NSFileManager defaultManager]
+      contentsOfDirectoryAtPath:[DOCUMENTS
+                                    stringByAppendingPathComponent:@"/Music"]
+                          error:nil];
+
+  if ([contentArray
+          containsObject:[musicModel.title stringByAppendingString:@".mp3"]]) {
+    cell.downloadOutlet.hidden = YES;
+  }
+    
+    cell.image.image = nil;
 
   [self.api getImageForMusicWithUrl:musicModel.imageUrl
                     completionBlock:^(UIImage *image) {
@@ -131,19 +147,52 @@ static UIActivityIndicatorView *activityTable;
   [self.navigationController pushViewController:userTrack animated:YES];
 }
 
-- (void) downloadButton:(TrackListCell *)cell{
-    
-    
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    
-    Track *musicModel = self.array[indexPath.row];
+- (void)downloadButton:(TrackListCell *)cell {
     
     
     
-    [self.api downloadFileWithUrl:musicModel.streamUrl withFinishName:musicModel.title withCompletionBlock:^(NSURL *location) {
+  NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+
+  Track *musicModel = self.array[indexPath.row];
+    
+    if (self.isDownload == NO) {
         
-    }];
-    
+  [self.api downloadFileWithUrl:musicModel.streamUrl
+                 withFinishName:musicModel.title
+            withCompletionBlock:^(){
+
+                dispatch_async(dispatch_get_main_queue(), ^{
+                   
+                    [cell.downloadOutlet setBackgroundImage:[UIImage imageNamed:@"stop"] forState:UIControlStateNormal];
+                    self.isDownload = YES;
+                });
+                
+
+            } withCompletionDownloadBlock:^{
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                
+                cell.downloadOutlet.hidden = YES;
+                    
+                });
+            }];
+        
+        
+        
+    } else{
+        
+        [self.api stopDownloadTask:^{
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                [cell.downloadOutlet setBackgroundImage:[UIImage imageNamed:@"download"] forState:UIControlStateNormal];
+                self.isDownload = NO;
+            });
+            
+        }];
+
+        
+    }   
     
 }
 
@@ -188,7 +237,18 @@ static UIActivityIndicatorView *activityTable;
 
                         });
 
+                      } noResult:^(BOOL result) {
+                          
+                          if (result==NO) {
+                              dispatch_async(dispatch_get_main_queue(), ^{
+
+                              [activity stopAnimating];
+   
+                              });
+                          }
+                          
                       }];
+
   //}];
 }
 

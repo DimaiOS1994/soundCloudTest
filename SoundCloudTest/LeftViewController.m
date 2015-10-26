@@ -15,85 +15,82 @@
 
 @interface LeftViewController ()
 
-@property (strong, nonatomic) NSArray *titlesArray;
+@property(strong, nonatomic) NSArray *titlesArray;
 
 @end
 
 @implementation LeftViewController
 
-- (void)awakeFromNib
-{
-    [super awakeFromNib];
+- (void)awakeFromNib {
+  [super awakeFromNib];
 
-    _titlesArray = @[@"SoundCloud",
-                     @"VK",
-                     @"Загрузки",
-                     ];
+  _titlesArray = @[
+    @"SoundCloud",
+    @"VK",
+    @"Загрузки",
+  ];
 
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    self.tableView.contentInset = UIEdgeInsetsMake(20.f, 0.f, 20.f, 0.f);
-    self.tableView.showsVerticalScrollIndicator = NO;
+  self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+  self.tableView.contentInset = UIEdgeInsetsMake(20.f, 0.f, 20.f, 0.f);
+  self.tableView.showsVerticalScrollIndicator = NO;
 }
 
 #pragma mark -
 
-- (void)openLeftView
-{
-    [kMainViewController showLeftViewAnimated:YES completionHandler:nil];
+- (void)openLeftView {
+  [kMainViewController showLeftViewAnimated:YES completionHandler:nil];
 }
 
-- (void)openRightView
-{
-    [kMainViewController showRightViewAnimated:YES completionHandler:nil];
+- (void)openRightView {
+  [kMainViewController showRightViewAnimated:YES completionHandler:nil];
 }
 
 #pragma mark - UITableView DataSource
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+  return 1;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return _titlesArray.count;
+- (NSInteger)tableView:(UITableView *)tableView
+ numberOfRowsInSection:(NSInteger)section {
+  return _titlesArray.count;
 }
 
 #pragma mark - UITableView Delegate
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    LeftViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  LeftViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
 
-    cell.textLabel.text = _titlesArray[indexPath.row];
-    cell.separatorView.hidden = YES;
-    //cell.userInteractionEnabled = (indexPath.row != 2);
+  cell.textLabel.text = _titlesArray[indexPath.row];
+  cell.separatorView.hidden = YES;
+  // cell.userInteractionEnabled = (indexPath.row != 2);
 
-    cell.tintColor = _tintColor;
+  cell.tintColor = _tintColor;
 
-    return cell;
+  return cell;
 }
 
+- (void)tableView:(UITableView *)tableView
+    didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+  if (indexPath.row == 0) {
+    TrackListViewController *trackList =
+        [[UIStoryboard storyboardWithName:@"Main" bundle:nil]
+            instantiateViewControllerWithIdentifier:@"TrackListViewController"];
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.row == 0)
-    {
-        
-        TrackListViewController* trackList = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"TrackListViewController"];
+    [kNavigationController setViewControllers:@[ trackList ]];
 
-            [kNavigationController setViewControllers:@[ trackList]];
+    [kMainViewController hideLeftViewAnimated:YES completionHandler:nil];
+  } else if (indexPath.row == 2) {
+    FileManagerViewController *fileManager = [
+        [UIStoryboard storyboardWithName:@"Main" bundle:nil]
+        instantiateViewControllerWithIdentifier:@"FileManagerViewController"];
 
-        [kMainViewController hideLeftViewAnimated:YES completionHandler:nil];
-   } else if (indexPath.row == 2)
-    {
-        
-        FileManagerViewController* fileManager = [[UIStoryboard storyboardWithName:@"Main" bundle:nil] instantiateViewControllerWithIdentifier:@"FileManagerViewController"];
-        
-        [kNavigationController setViewControllers:@[ fileManager]];
-        
-        [kMainViewController hideLeftViewAnimated:YES completionHandler:nil];
-    }
+    [kNavigationController setViewControllers:@[ fileManager ]];
+
+    [kMainViewController hideLeftViewAnimated:YES completionHandler:nil];
+  }
 }
 
 @end

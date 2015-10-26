@@ -35,6 +35,7 @@
     [super layoutSubviews];
 
     self.textLabel.textColor = [self colorWithHexString:@"6e5102"];
+    
     _separatorView.backgroundColor = [_tintColor colorWithAlphaComponent:0.4];
 
     CGFloat height = ([UIScreen mainScreen].scale == 1.f ? 1.f : 0.5);
@@ -45,16 +46,14 @@
 -(UIColor*)colorWithHexString:(NSString*)hex
 {
     NSString *cString = [[hex stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] uppercaseString];
-    
-    // String should be 6 or 8 characters
+  
     if ([cString length] < 6) return [UIColor grayColor];
-    
-    // strip 0X if it appears
+
     if ([cString hasPrefix:@"0X"]) cString = [cString substringFromIndex:2];
     
     if ([cString length] != 6) return  [UIColor grayColor];
     
-    // Separate into r, g, b substrings
+
     NSRange range;
     range.location = 0;
     range.length = 2;
@@ -65,8 +64,7 @@
     
     range.location = 4;
     NSString *bString = [cString substringWithRange:range];
-    
-    // Scan values
+
     unsigned int r, g, b;
     [[NSScanner scannerWithString:rString] scanHexInt:&r];
     [[NSScanner scannerWithString:gString] scanHexInt:&g];
@@ -79,10 +77,10 @@
 }
 - (void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
 {
-    if (highlighted)
-        self.textLabel.textColor = [UIColor colorWithRed:0.f green:0.5 blue:1.f alpha:1.f];
-    else
-        self.textLabel.textColor = _tintColor;
+    //if (highlighted)
+      //  self.textLabel.textColor = [UIColor colorWithRed:0.f green:0.5 blue:1.f alpha:1.f];
+    //else
+      //  self.textLabel.textColor = _tintColor;
 }
 
 @end
