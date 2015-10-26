@@ -9,12 +9,19 @@
 /* Begin PBXBuildFile section */
 		3202B81B1BD023A6008202A3 /* SoundCloudAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = 3202B81A1BD023A6008202A3 /* SoundCloudAPI.m */; settings = {ASSET_TAGS = (); }; };
 		3202B81E1BD059DF008202A3 /* TrackListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3202B81D1BD059DF008202A3 /* TrackListCell.m */; settings = {ASSET_TAGS = (); }; };
+		3210FA8F1BD9C046006A8E9E /* UserTrackTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3210FA8E1BD9C046006A8E9E /* UserTrackTableViewController.m */; settings = {ASSET_TAGS = (); }; };
 		3248E72E1BC7DFF0006D9D8B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3248E72D1BC7DFF0006D9D8B /* main.m */; };
 		3248E7311BC7DFF0006D9D8B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3248E7301BC7DFF0006D9D8B /* AppDelegate.m */; };
 		3248E7341BC7DFF0006D9D8B /* TrackListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3248E7331BC7DFF0006D9D8B /* TrackListViewController.m */; };
 		3248E7371BC7DFF0006D9D8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3248E7351BC7DFF0006D9D8B /* Main.storyboard */; };
 		3248E7391BC7DFF0006D9D8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3248E7381BC7DFF0006D9D8B /* Assets.xcassets */; };
 		3248E73C1BC7DFF0006D9D8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3248E73A1BC7DFF0006D9D8B /* LaunchScreen.storyboard */; };
+		32A069D11BDD9D3A00563E33 /* LeftViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A069CA1BDD9D3A00563E33 /* LeftViewCell.m */; settings = {ASSET_TAGS = (); }; };
+		32A069D21BDD9D3A00563E33 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A069CC1BDD9D3A00563E33 /* LeftViewController.m */; settings = {ASSET_TAGS = (); }; };
+		32A069D31BDD9D3A00563E33 /* LGSideMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A069CE1BDD9D3A00563E33 /* LGSideMenuController.m */; settings = {ASSET_TAGS = (); }; };
+		32A069D41BDD9D3A00563E33 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A069D01BDD9D3A00563E33 /* MainViewController.m */; settings = {ASSET_TAGS = (); }; };
+		32A069D71BDD9E9600563E33 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A069D61BDD9E9600563E33 /* ViewController.m */; settings = {ASSET_TAGS = (); }; };
+		32F05C011BDA8DFF00D8B38D /* FileManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F05C001BDA8DFF00D8B38D /* FileManagerViewController.m */; settings = {ASSET_TAGS = (); }; };
 		32F48E841BCFD7640037D4BA /* Track.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F48E831BCFD7640037D4BA /* Track.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
@@ -23,6 +30,8 @@
 		3202B81A1BD023A6008202A3 /* SoundCloudAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoundCloudAPI.m; sourceTree = "<group>"; };
 		3202B81C1BD059DF008202A3 /* TrackListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackListCell.h; sourceTree = "<group>"; };
 		3202B81D1BD059DF008202A3 /* TrackListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackListCell.m; sourceTree = "<group>"; };
+		3210FA8D1BD9C046006A8E9E /* UserTrackTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTrackTableViewController.h; sourceTree = "<group>"; };
+		3210FA8E1BD9C046006A8E9E /* UserTrackTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTrackTableViewController.m; sourceTree = "<group>"; };
 		3248E7291BC7DFF0006D9D8B /* SoundCloudTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundCloudTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3248E72D1BC7DFF0006D9D8B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3248E72F1BC7DFF0006D9D8B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -33,6 +42,18 @@
 		3248E7381BC7DFF0006D9D8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3248E73B1BC7DFF0006D9D8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3248E73D1BC7DFF0006D9D8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		32A069C91BDD9D3A00563E33 /* LeftViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewCell.h; sourceTree = "<group>"; };
+		32A069CA1BDD9D3A00563E33 /* LeftViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewCell.m; sourceTree = "<group>"; };
+		32A069CB1BDD9D3A00563E33 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		32A069CC1BDD9D3A00563E33 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		32A069CD1BDD9D3A00563E33 /* LGSideMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LGSideMenuController.h; sourceTree = "<group>"; };
+		32A069CE1BDD9D3A00563E33 /* LGSideMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LGSideMenuController.m; sourceTree = "<group>"; };
+		32A069CF1BDD9D3A00563E33 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		32A069D01BDD9D3A00563E33 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		32A069D51BDD9E9600563E33 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		32A069D61BDD9E9600563E33 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		32F05BFF1BDA8DFF00D8B38D /* FileManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileManagerViewController.h; sourceTree = "<group>"; };
+		32F05C001BDA8DFF00D8B38D /* FileManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileManagerViewController.m; sourceTree = "<group>"; };
 		32F48E821BCFD7640037D4BA /* Track.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Track.h; sourceTree = "<group>"; };
 		32F48E831BCFD7640037D4BA /* Track.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Track.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -67,17 +88,23 @@
 		3248E72B1BC7DFF0006D9D8B /* SoundCloudTest */ = {
 			isa = PBXGroup;
 			children = (
+				32A069D91BDDA59000563E33 /* Models */,
+				32A069D81BDDA26B00563E33 /* Cell's */,
 				3248E72F1BC7DFF0006D9D8B /* AppDelegate.h */,
 				3248E7301BC7DFF0006D9D8B /* AppDelegate.m */,
 				3248E7321BC7DFF0006D9D8B /* TrackListViewController.h */,
 				3248E7331BC7DFF0006D9D8B /* TrackListViewController.m */,
 				3202B8191BD023A6008202A3 /* SoundCloudAPI.h */,
 				3202B81A1BD023A6008202A3 /* SoundCloudAPI.m */,
-				32F48E821BCFD7640037D4BA /* Track.h */,
-				32F48E831BCFD7640037D4BA /* Track.m */,
 				3248E7351BC7DFF0006D9D8B /* Main.storyboard */,
-				3202B81C1BD059DF008202A3 /* TrackListCell.h */,
-				3202B81D1BD059DF008202A3 /* TrackListCell.m */,
+				32A069D51BDD9E9600563E33 /* ViewController.h */,
+				32A069D61BDD9E9600563E33 /* ViewController.m */,
+				32F05BFF1BDA8DFF00D8B38D /* FileManagerViewController.h */,
+				32F05C001BDA8DFF00D8B38D /* FileManagerViewController.m */,
+				32A069CB1BDD9D3A00563E33 /* LeftViewController.h */,
+				32A069CC1BDD9D3A00563E33 /* LeftViewController.m */,
+				3210FA8D1BD9C046006A8E9E /* UserTrackTableViewController.h */,
+				3210FA8E1BD9C046006A8E9E /* UserTrackTableViewController.m */,
 				3248E7381BC7DFF0006D9D8B /* Assets.xcassets */,
 				3248E73A1BC7DFF0006D9D8B /* LaunchScreen.storyboard */,
 				3248E73D1BC7DFF0006D9D8B /* Info.plist */,
@@ -89,9 +116,33 @@
 		3248E72C1BC7DFF0006D9D8B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				32A069CF1BDD9D3A00563E33 /* MainViewController.h */,
+				32A069D01BDD9D3A00563E33 /* MainViewController.m */,
+				32A069CD1BDD9D3A00563E33 /* LGSideMenuController.h */,
+				32A069CE1BDD9D3A00563E33 /* LGSideMenuController.m */,
 				3248E72D1BC7DFF0006D9D8B /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		32A069D81BDDA26B00563E33 /* Cell's */ = {
+			isa = PBXGroup;
+			children = (
+				32A069C91BDD9D3A00563E33 /* LeftViewCell.h */,
+				32A069CA1BDD9D3A00563E33 /* LeftViewCell.m */,
+				3202B81C1BD059DF008202A3 /* TrackListCell.h */,
+				3202B81D1BD059DF008202A3 /* TrackListCell.m */,
+			);
+			name = "Cell's";
+			sourceTree = "<group>";
+		};
+		32A069D91BDDA59000563E33 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				32F48E821BCFD7640037D4BA /* Track.h */,
+				32F48E831BCFD7640037D4BA /* Track.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,7 +216,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3202B81B1BD023A6008202A3 /* SoundCloudAPI.m in Sources */,
+				32A069D21BDD9D3A00563E33 /* LeftViewController.m in Sources */,
+				32A069D31BDD9D3A00563E33 /* LGSideMenuController.m in Sources */,
+				32A069D11BDD9D3A00563E33 /* LeftViewCell.m in Sources */,
+				3210FA8F1BD9C046006A8E9E /* UserTrackTableViewController.m in Sources */,
+				32F05C011BDA8DFF00D8B38D /* FileManagerViewController.m in Sources */,
+				32A069D71BDD9E9600563E33 /* ViewController.m in Sources */,
 				3202B81E1BD059DF008202A3 /* TrackListCell.m in Sources */,
+				32A069D41BDD9D3A00563E33 /* MainViewController.m in Sources */,
 				3248E7341BC7DFF0006D9D8B /* TrackListViewController.m in Sources */,
 				32F48E841BCFD7640037D4BA /* Track.m in Sources */,
 				3248E7311BC7DFF0006D9D8B /* AppDelegate.m in Sources */,

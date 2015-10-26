@@ -10,11 +10,11 @@
 
 @interface Track : NSObject
 
-@property(strong, nonatomic) NSString* purchaseUrl;
-@property(strong, nonatomic) NSString* title;
-@property(strong, nonatomic) NSString* streamUrl;
-@property(strong, nonatomic) NSString* userName;
-@property(strong, nonatomic) NSString* userID;
-@property(strong, nonatomic) NSString* imageUrl;
+@property(strong, nonatomic) NSString *purchaseUrl;
+@property(strong, nonatomic) NSString *title;
+@property(strong, nonatomic) NSString *streamUrl;
+@property(strong, nonatomic) NSString *userName;
+@property(strong, nonatomic) NSString *userID;
+@property(strong, nonatomic) NSString *imageUrl;
 
 @end

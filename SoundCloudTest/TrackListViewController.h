@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TrackListCell.h"
 
 @interface TrackListViewController
     : UIViewController<UISearchBarDelegate, UITableViewDataSource,
-                       UITableViewDelegate>
+                       UITableViewDelegate, TrackListCellDelegate>
 
 @property(strong, nonatomic) IBOutlet UISearchBar *searchBar;
 

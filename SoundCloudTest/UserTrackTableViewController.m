@@ -1,46 +1,42 @@
 //
-//  ViewController.m
+//  UserTrackTableViewController.m
 //  SoundCloudTest
 //
-//  Created by Дима on 09.10.15.
+//  Created by Дима on 23.10.15.
 //  Copyright © 2015 Дима. All rights reserved.
 //
 
-#import "TrackListViewController.h"
+#import "UserTrackTableViewController.h"
+#import "TrackListCell.h"
+#import "SoundCloudAPI.h"
+#import "Track.h"
 #import <AVFoundation/AVFoundation.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVKit/AVKit.h>
-#import "SoundCloudAPI.h"
-#import "Track.h"
-#import "TrackListCell.h"
-#import "UserTrackTableViewController.h"
 
-@interface TrackListViewController ()
+@interface UserTrackTableViewController ()
 
+@property(strong, nonatomic) SoundCloudAPI *api;
 @property(strong, nonatomic) NSMutableArray *array;
 @property(strong, nonatomic) AVQueuePlayer *audio;
-@property(strong, nonatomic) SoundCloudAPI *api;
-@property(strong, nonatomic) NSString *searchText;
-@property(strong, nonatomic) NSString *userId;
 
 @end
 
 static UIActivityIndicatorView *activity;
 static UIActivityIndicatorView *activityTable;
 
-@implementation TrackListViewController
+@implementation UserTrackTableViewController
 
 - (void)viewDidLoad {
   [super viewDidLoad];
 
-  self.userId = @"";
-
-  self.navigationItem.title = @"Поиск";
+  self.navigationItem.title = self.userName;
 
   activityTable = [[UIActivityIndicatorView alloc]
       initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-  [activityTable setFrame:CGRectMake(self.view.center.x - 15,
-                                     self.view.frame.size.height - 30, 30, 30)];
+  [activityTable
+      setFrame:CGRectMake(self.view.center.x - 15,
+                          self.tableView.frame.size.height - 30, 30, 30)];
   [activityTable setColor:[UIColor blackColor]];
   [self.view addSubview:activityTable];
   [self.view bringSubviewToFront:activityTable];
@@ -52,22 +48,37 @@ static UIActivityIndicatorView *activityTable;
   [self.view addSubview:activity];
   [self.view bringSubviewToFront:activity];
 
-  self.searchBar.delegate = self;
-  self.tableView.delegate = self;
-  self.tableView.dataSource = self;
+  [activity startAnimating];
+
+  self.api = [[SoundCloudAPI alloc] init];
+  [self.api getMusicsWithSearchString:@""
+                               orUser:self.userId
+                            withLimit:6
+                           withOffset:0
+                      completionBlock:^(NSArray *array, NSError *error) {
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                          self.array = [NSMutableArray arrayWithArray:array];
+                          [self.tableView reloadData];
+                          [activity stopAnimating];
+
+                        });
+
+                      }];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  [self.navigationController setNavigationBarHidden:NO animated:YES];
+}
+
+#pragma mark - Table view data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+  return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
   return self.array.count;
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-  [self.navigationController setNavigationBarHidden:YES animated:YES];
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -83,7 +94,7 @@ static UIActivityIndicatorView *activityTable;
   if (indexPath.row + 1 == self.array.count) {
     [activityTable startAnimating];
 
-    [self.api getMusicsWithSearchString:self.searchText
+    [self.api getMusicsWithSearchString:@""
                                  orUser:self.userId
                               withLimit:6
                              withOffset:self.array.count
@@ -99,8 +110,8 @@ static UIActivityIndicatorView *activityTable;
 
   Track *musicModel = self.array[indexPath.row];
   cell.title.text = musicModel.title;
-  [cell.userButton setTitle:musicModel.userName forState:UIControlStateNormal];
-  cell.delegate = self;
+
+  cell.userButton.hidden = YES;
 
   [self.api getImageForMusicWithUrl:musicModel.imageUrl
                     completionBlock:^(UIImage *image) {
@@ -114,37 +125,6 @@ static UIActivityIndicatorView *activityTable;
                     }];
 
   return cell;
-}
-
-- (void)userButton:(TrackListCell *)cell {
-  NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-
-  Track *musicModel = self.array[indexPath.row];
-
-  UIStoryboard *myboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-  UserTrackTableViewController *userTrack = (UserTrackTableViewController
-                                                 *)[myboard
-      instantiateViewControllerWithIdentifier:@"UserTrackTableViewController"];
-  userTrack.userId = musicModel.userID;
-  userTrack.userName = musicModel.userName;
-
-  [self.navigationController pushViewController:userTrack animated:YES];
-}
-
-- (void) downloadButton:(TrackListCell *)cell{
-    
-    
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    
-    Track *musicModel = self.array[indexPath.row];
-    
-    
-    
-    [self.api downloadFileWithUrl:musicModel.streamUrl withFinishName:musicModel.title withCompletionBlock:^(NSURL *location) {
-        
-    }];
-    
-    
 }
 
 - (void)tableView:(UITableView *)tableView
@@ -168,35 +148,7 @@ static UIActivityIndicatorView *activityTable;
   [vc.player play];
 }
 
-- (void)searchBar:(UISearchBar *)searchBar
-    textDidChange:(NSString *)searchText {
-  self.api = [[SoundCloudAPI alloc] init];
-
-  self.searchText = searchText;
-  [activity startAnimating];
-
-  [self.api getMusicsWithSearchString:self.searchText
-                               orUser:self.userId
-                            withLimit:6
-                           withOffset:0
-                      completionBlock:^(NSArray *array, NSError *error) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
-
-                          self.array = [NSMutableArray arrayWithArray:array];
-                          [self.tableView reloadData];
-                          [activity stopAnimating];
-
-                        });
-
-                      }];
-  //}];
+- (void)dealloc {
+  NSLog(@"UserTableViewController");
 }
-
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
-  [searchBar resignFirstResponder];
-}
-- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
-  [searchBar resignFirstResponder];
-}
-
 @end

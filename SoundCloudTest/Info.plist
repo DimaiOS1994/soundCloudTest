@@ -40,7 +40,7 @@
     <dict>
         <key>NSExceptionDomains</key>
         <dict>
-            <key>soundcloud.com</key>
+            <key>api.soundcloud.com</key>
             <dict>
                 <!--Include to allow subdomains-->
                 <key>NSIncludesSubdomains</key>
@@ -54,5 +54,26 @@
             </dict>
         </dict>
     </dict>
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSExceptionDomains</key>
+        <dict>
+            <key>https://api.soundcloud.com/tracks/195055773/download?client_id=830a5aeb830452c40a70c14f1ac090df</key>
+            <dict>
+                <!--Include to allow subdomains-->
+                <key>NSIncludesSubdomains</key>
+                <true/>
+                <!--Include to allow HTTP requests-->
+                <key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+                <true/>
+                <!--Include to specify minimum TLS version-->
+                <key>NSTemporaryExceptionMinimumTLSVersion</key>
+                <string>TLSv1.1</string>
+            </dict>
+        </dict>
+    </dict>
+
 </dict>
 </plist>
+
+
