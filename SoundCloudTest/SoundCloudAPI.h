@@ -16,7 +16,7 @@
 @property(strong, nonatomic) NSURLSession *session;
 //@property(strong, nonatomic) NSURLSession *backgroundSession;
 @property(strong, nonatomic) NSString *fileName;
-@property(strong, nonatomic) NSURLSessionDownloadTask* downloadTask;
+@property(strong, nonatomic) NSURLSessionDownloadTask *downloadTask;
 
 @property(nonatomic, copy) void (^completion)(void);
 
@@ -24,9 +24,9 @@
                            orUser:(NSString *)userName
                         withLimit:(NSInteger)limit
                        withOffset:(NSInteger)offset
-                  completionBlock:
-(void (^)(NSArray *array, NSError *error))completion noResult:(void(^)(BOOL result)) results;
-
+                  completionBlock:(void (^)(NSArray *array,
+                                            NSError *error))completion
+                         noResult:(void (^)(BOOL result))results;
 
 - (void)getUserMusicForUserID:(NSString *)userID
               completionBlock:
@@ -39,8 +39,8 @@
 
 - (void)downloadFileWithUrl:(NSString *)url
              withFinishName:(NSString *)name
-        withCompletionBlock:(void (^)(void))completion withCompletionDownloadBlock:(void(^)(void)) downloadCompletion;
+        withCompletionBlock:(void (^)(void))completion
+withCompletionDownloadBlock:(void (^)(void))downloadCompletion;
 
-
-- (void)stopDownloadTask: (void(^)(void)) completion;
+- (void)stopDownloadTask:(void (^)(void))completion;
 @end

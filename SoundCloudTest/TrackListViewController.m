@@ -22,7 +22,7 @@
 @property(strong, nonatomic) SoundCloudAPI *api;
 @property(strong, nonatomic) NSString *searchText;
 @property(strong, nonatomic) NSString *userId;
-@property (assign,nonatomic) BOOL isDownload;
+@property(assign, nonatomic) BOOL isDownload;
 
 @end
 
@@ -35,7 +35,7 @@ static UIActivityIndicatorView *activityTable;
   [super viewDidLoad];
 
   self.userId = @"";
-    self.isDownload = NO;
+  self.isDownload = NO;
 
   self.navigationItem.title = @"Поиск";
 
@@ -86,19 +86,20 @@ static UIActivityIndicatorView *activityTable;
     [activityTable startAnimating];
 
     [self.api getMusicsWithSearchString:self.searchText
-                                 orUser:self.userId
-                              withLimit:6
-                             withOffset:self.array.count
-                        completionBlock:^(NSArray *array, NSError *error) {
-                          dispatch_async(dispatch_get_main_queue(), ^{
+        orUser:self.userId
+        withLimit:6
+        withOffset:self.array.count
+        completionBlock:^(NSArray *array, NSError *error) {
+          dispatch_async(dispatch_get_main_queue(), ^{
 
-                            [self.array addObjectsFromArray:array];
-                            [self.tableView reloadData];
-                            [activityTable stopAnimating];
-                          });
-                        } noResult:^(BOOL result) {
-                            
-                        }];
+            [self.array addObjectsFromArray:array];
+            [self.tableView reloadData];
+            [activityTable stopAnimating];
+          });
+        }
+        noResult:^(BOOL result){
+
+        }];
   }
 
   Track *musicModel = self.array[indexPath.row];
@@ -115,8 +116,8 @@ static UIActivityIndicatorView *activityTable;
           containsObject:[musicModel.title stringByAppendingString:@".mp3"]]) {
     cell.downloadOutlet.hidden = YES;
   }
-    
-    cell.image.image = nil;
+
+  cell.image.image = nil;
 
   [self.api getImageForMusicWithUrl:musicModel.imageUrl
                     completionBlock:^(UIImage *image) {
@@ -148,52 +149,44 @@ static UIActivityIndicatorView *activityTable;
 }
 
 - (void)downloadButton:(TrackListCell *)cell {
-    
-    
-    
   NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
 
   Track *musicModel = self.array[indexPath.row];
-    
-    if (self.isDownload == NO) {
-        
-  [self.api downloadFileWithUrl:musicModel.streamUrl
-                 withFinishName:musicModel.title
-            withCompletionBlock:^(){
 
-                dispatch_async(dispatch_get_main_queue(), ^{
-                   
-                    [cell.downloadOutlet setBackgroundImage:[UIImage imageNamed:@"stop"] forState:UIControlStateNormal];
-                    self.isDownload = YES;
-                });
-                
+  if (self.isDownload == NO) {
+    [self.api downloadFileWithUrl:musicModel.streamUrl
+        withFinishName:musicModel.title
+        withCompletionBlock:^() {
 
-            } withCompletionDownloadBlock:^{
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                
-                cell.downloadOutlet.hidden = YES;
-                    
-                });
-            }];
-        
-        
-        
-    } else{
-        
-        [self.api stopDownloadTask:^{
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                
-                [cell.downloadOutlet setBackgroundImage:[UIImage imageNamed:@"download"] forState:UIControlStateNormal];
-                self.isDownload = NO;
-            });
-            
+          dispatch_async(dispatch_get_main_queue(), ^{
+
+            [cell.downloadOutlet setBackgroundImage:[UIImage imageNamed:@"stop"]
+                                           forState:UIControlStateNormal];
+            self.isDownload = YES;
+          });
+
+        }
+        withCompletionDownloadBlock:^{
+
+          dispatch_async(dispatch_get_main_queue(), ^{
+
+            cell.downloadOutlet.hidden = YES;
+
+          });
         }];
 
-        
-    }   
-    
+  } else {
+    [self.api stopDownloadTask:^{
+
+      dispatch_async(dispatch_get_main_queue(), ^{
+
+        [cell.downloadOutlet setBackgroundImage:[UIImage imageNamed:@"download"]
+                                       forState:UIControlStateNormal];
+        self.isDownload = NO;
+      });
+
+    }];
+  }
 }
 
 - (void)tableView:(UITableView *)tableView
@@ -225,29 +218,30 @@ static UIActivityIndicatorView *activityTable;
   [activity startAnimating];
 
   [self.api getMusicsWithSearchString:self.searchText
-                               orUser:self.userId
-                            withLimit:6
-                           withOffset:0
-                      completionBlock:^(NSArray *array, NSError *error) {
-                        dispatch_async(dispatch_get_main_queue(), ^{
+      orUser:self.userId
+      withLimit:6
+      withOffset:0
+      completionBlock:^(NSArray *array, NSError *error) {
+        dispatch_async(dispatch_get_main_queue(), ^{
 
-                          self.array = [NSMutableArray arrayWithArray:array];
-                          [self.tableView reloadData];
-                          [activity stopAnimating];
+          self.array = [NSMutableArray arrayWithArray:array];
+          [self.tableView reloadData];
+          [activity stopAnimating];
 
-                        });
+        });
 
-                      } noResult:^(BOOL result) {
-                          
-                          if (result==NO) {
-                              dispatch_async(dispatch_get_main_queue(), ^{
+      }
+      noResult:^(BOOL result) {
 
-                              [activity stopAnimating];
-   
-                              });
-                          }
-                          
-                      }];
+        if (result == NO) {
+          dispatch_async(dispatch_get_main_queue(), ^{
+
+            [activity stopAnimating];
+
+          });
+        }
+
+      }];
 
   //}];
 }

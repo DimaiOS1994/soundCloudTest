@@ -21,14 +21,10 @@
 }
 
 - (IBAction)userButtonAction:(UIButton *)sender {
-    
   [self.delegate userButton:self];
-    
 }
 
 - (IBAction)downloadAction:(UIButton *)sender {
-    
-    [self.delegate downloadButton:self];
-    
+  [self.delegate downloadButton:self];
 }
 @end

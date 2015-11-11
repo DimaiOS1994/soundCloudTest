@@ -10,7 +10,6 @@
 #import "Track.h"
 #import <UIKit/UIKit.h>
 
-
 #define CLIENT_ID @"830a5aeb830452c40a70c14f1ac090df"
 #define DOCUMENTS                                                             \
   [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, \
@@ -22,39 +21,32 @@
   self = [super init];
   if (self) {
     self.session = [NSURLSession sharedSession];
-      
-//          static dispatch_once_t onceToken;
-//          dispatch_once(&onceToken, ^{
-//              self.backgroundSession = [NSURLSession
-//                                        sessionWithConfiguration:
-//                                        [NSURLSessionConfiguration
-//                                         backgroundSessionConfigurationWithIdentifier:@"backgroundSess"]
-//                                        delegate:self
-//                                        delegateQueue:nil];
-//
-//          });
-      
+
   }
   return self;
 }
-- (NSURLSession *)backgroundSession{
-    static NSURLSession *session = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        NSLog(@"create new session");
-        NSURLSessionConfiguration *config = [NSURLSessionConfiguration backgroundSessionConfigurationWithIdentifier:@"com.dev.BackgroundDownloadTest.BackgroundSession"];
-        [config setAllowsCellularAccess:YES];
-        session = [NSURLSession sessionWithConfiguration:config delegate:self delegateQueue:nil];
-    });
-    return session;
+- (NSURLSession *)backgroundSession {
+  static NSURLSession *session = nil;
+  static dispatch_once_t onceToken;
+  dispatch_once(&onceToken, ^{
+    NSLog(@"create new session");
+    NSURLSessionConfiguration *config = [NSURLSessionConfiguration
+        backgroundSessionConfigurationWithIdentifier:
+            @"com.dev.BackgroundDownloadTest.BackgroundSession"];
+    [config setAllowsCellularAccess:YES];
+    session = [NSURLSession sessionWithConfiguration:config
+                                            delegate:self
+                                       delegateQueue:nil];
+  });
+  return session;
 }
 - (void)getMusicsWithSearchString:(NSString *)searchString
                            orUser:(NSString *)userId
                         withLimit:(NSInteger)limit
                        withOffset:(NSInteger)offset
-                  completionBlock:
-                      (void (^)(NSArray *array, NSError *error))completion noResult:(void(^)(BOOL result)) results
-{
+                  completionBlock:(void (^)(NSArray *array,
+                                            NSError *error))completion
+                         noResult:(void (^)(BOOL result))results {
   NSMutableArray *resultArray = [NSMutableArray array];
 
   NSMutableURLRequest *request;
@@ -95,8 +87,6 @@
               if ([[dictionary objectForKey:@"streamable"] integerValue] == 1) {
                 NSDictionary *dictUser = [dictionary objectForKey:@"user"];
 
-                //NSLog(@"%@", [dictionary description]);
-
                 Track *musicModel = [[Track alloc] init];
                 musicModel.purchaseUrl =
                     [dictionary objectForKey:@"purchase_url"];
@@ -111,8 +101,8 @@
             }
 
             completion(resultArray, error);
-          } else{
-              results(NO);
+          } else {
+            results(NO);
           }
 
         }] resume];
@@ -120,45 +110,36 @@
 
 - (void)downloadFileWithUrl:(NSString *)url
              withFinishName:(NSString *)name
-        withCompletionBlock:(void (^)(void))completion withCompletionDownloadBlock:(void(^)(void)) downloadCompletion {
+        withCompletionBlock:(void (^)(void))completion
+withCompletionDownloadBlock:(void (^)(void))downloadCompletion {
+  self.fileName = name;
 
-        self.fileName = name;
-
-   self.downloadTask = [[self backgroundSession]
+  self.downloadTask = [[self backgroundSession]
       downloadTaskWithRequest:
           [NSURLRequest
               requestWithURL:
-                  [NSURL URLWithString:
-                             [NSString stringWithFormat:@"%@?client_id=%@", url,
-                                                        CLIENT_ID]]]];
-    [self.downloadTask resume];
-    
-    completion();
-    
-    self.completion = downloadCompletion;
+                  [NSURL URLWithString:[NSString
+                                           stringWithFormat:@"%@?client_id=%@",
+                                                            url, CLIENT_ID]]]];
+  [self.downloadTask resume];
+
+  completion();
+
+  self.completion = downloadCompletion;
 }
 
-- (void)stopDownloadTask: (void(^)(void)) completion{
-    
-    
-    [self.downloadTask cancel];
-    completion();
-    
-    
+- (void)stopDownloadTask:(void (^)(void))completion {
+  [self.downloadTask cancel];
+  completion();
 }
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task
-didCompleteWithError:(nullable NSError *)error{
-
+- (void)URLSession:(NSURLSession *)session
+                    task:(NSURLSessionTask *)task
+    didCompleteWithError:(nullable NSError *)error {
 }
-
 
 - (void)URLSession:(NSURLSession *)session
                  downloadTask:(NSURLSessionDownloadTask *)downloadTask
     didFinishDownloadingToURL:(NSURL *)location {
-
-        
-    
-    
   BOOL musicDirectory;
 
   musicDirectory = [[NSFileManager defaultManager]
@@ -193,8 +174,8 @@ didCompleteWithError:(nullable NSError *)error{
                                                           self.fileName]]
                  error:&error];
   }
-    
-    self.completion();
+
+  self.completion();
 }
 
 - (void)getImageForMusicWithUrl:(NSString *)url

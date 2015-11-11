@@ -63,7 +63,7 @@ static UIActivityIndicatorView *activityTable;
 
                         });
 
-                      }noResult:nil];
+                      } noResult:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -105,7 +105,7 @@ static UIActivityIndicatorView *activityTable;
                             [self.tableView reloadData];
                             [activityTable stopAnimating];
                           });
-                        }noResult:nil];
+                        } noResult:nil];
   }
 
   Track *musicModel = self.array[indexPath.row];

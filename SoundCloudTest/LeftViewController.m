@@ -73,7 +73,7 @@
 
 - (void)tableView:(UITableView *)tableView
     didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+  [tableView deselectRowAtIndexPath:indexPath animated:YES];
   if (indexPath.row == 0) {
     TrackListViewController *trackList =
         [[UIStoryboard storyboardWithName:@"Main" bundle:nil]

@@ -23,7 +23,7 @@
 @property(strong, nonatomic) IBOutlet UILabel *title;
 @property(strong, nonatomic) IBOutlet UIButton *userButton;
 @property(weak, nonatomic) id<TrackListCellDelegate> delegate;
-@property (strong, nonatomic) IBOutlet UIButton *downloadOutlet;
+@property(strong, nonatomic) IBOutlet UIButton *downloadOutlet;
 
 - (IBAction)userButtonAction:(UIButton *)sender;
 
