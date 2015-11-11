@@ -16,24 +16,7 @@
 
 - (BOOL)application:(UIApplication *)application
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  // Override point for customization after application launch.
 
-  //    NSURLSessionConfiguration* config = [NSURLSessionConfiguration
-  //    defaultSessionConfiguration];
-  //
-  //    NSURLSession* session = [NSURLSession sessionWithConfiguration:config];
-  //
-  //    [[session dataTaskWithURL:[NSURL
-  //    URLWithString:@"http://api.soundcloud.com/users/4803918/tracks?client_id=830a5aeb830452c40a70c14f1ac090df"]
-  //    completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable
-  //    response, NSError * _Nullable error) {
-  //
-  //        NSDictionary* dict = [NSJSONSerialization JSONObjectWithData:data
-  //        options:0 error:nil];
-  //        NSLog(@"%@", dict);
-  //
-  //
-  //    }]resume];
 
   return YES;
 }

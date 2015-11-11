@@ -64,8 +64,7 @@
 
   cell.textLabel.text = _titlesArray[indexPath.row];
   cell.separatorView.hidden = YES;
-  // cell.userInteractionEnabled = (indexPath.row != 2);
-
+  
   cell.tintColor = _tintColor;
 
   return cell;

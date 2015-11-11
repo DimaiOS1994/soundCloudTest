@@ -29,39 +29,6 @@
       contentsOfDirectoryAtPath:[DOCUMENTS
                                     stringByAppendingPathComponent:@"/Music"]
                           error:nil];
-
-  //
-  //    [self.api downloadFileWithUrl:[NSURL
-  //    URLWithString:@"http://www.apple.com"] withCompletionBlock:^(NSURL
-  //    *location) {
-  //
-  //        self.api downloadFileWithUrl:[NSURL
-  //        URLWithString:@"http://www.apple.com"] withFinishName:<#(NSString
-  //        *)#> withCompletionBlock:<#^(NSURL *location)completion#>
-  //
-  //
-  //       dispatch_async(dispatch_get_main_queue(), ^{
-  //
-  //           AVPlayerItem *item = [AVPlayerItem playerItemWithURL:location];
-  //
-  //           self.audio = [[AVQueuePlayer alloc] initWithPlayerItem:item];
-  //
-  //           self.audio.actionAtItemEnd = AVPlayerActionAtItemEndAdvance;
-  //
-  //           AVPlayerViewController *vc = [[AVPlayerViewController alloc]
-  //           init];
-  //           [vc setPlayer:self.audio];
-  //
-  //           [self presentViewController:vc animated:YES completion:nil];
-  //           [vc.player play];
-  //
-  //       });
-  //
-  //
-  //
-  //
-  //
-  //    }];
 }
 - (void)tableView:(UITableView *)tableView
     didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

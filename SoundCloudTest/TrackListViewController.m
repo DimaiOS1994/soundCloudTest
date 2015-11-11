@@ -243,7 +243,7 @@ static UIActivityIndicatorView *activityTable;
 
       }];
 
-  //}];
+
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
